@@ -12,7 +12,7 @@ Functionality:
 -> Add todos <br /> 
 -> Remove todos  <br /> 
 -> Complete todos <br /> 
--> Nothing else. <br /> 
+-> Not a single thing more. Just that --Nothing else. <br /> 
 
 ------------------
 
