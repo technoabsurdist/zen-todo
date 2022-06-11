@@ -32,7 +32,6 @@ app.get('/todos', async (req, res) => {
     res.json(todos)
 })
 
-
 /* POST /todo/new 
 * == post new todo == */ 
 app.post('/todo/new', (req, res) => {
@@ -57,7 +56,7 @@ app.delete('/todo/delete/:id', async (req, res) => {
 
 /* PUT /todo/complete/:id
  * == change state of todo with :id to other binary state (complete/not)== */ 
-app.put('/todo/complete/:id', async (req, res) => {
+app.get('/todo/complete/:id', async (req, res) => {
     const todo = await Todo.findById(req.params.id)
 
     todo.complete = !todo.complete
