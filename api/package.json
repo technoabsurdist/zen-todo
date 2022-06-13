@@ -1,11 +1,12 @@
 {
-  "name": "mern-todo-api",
+  "name": "flashy",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "start": "nodemon server.js"
   },
+  "type": "module", 
   "author": "Emi",
   "license": "MIT",
   "dependencies": {

@@ -4,7 +4,7 @@
 const express = require('express')
 const mongoose = require('mongoose')
 const cors = require('cors')
-const QA = require("./models/QA")
+const QA = require("./models/QA.cjs")
 
 /* PORT used */ 
 const PORT = 5000
@@ -28,6 +28,7 @@ mongoose.connect("mongodb://127.0.0.1:27017/flashy", {
 * == get all questions == */ 
 app.get('/questions', async (req, res) => {
     const questions = await QA.find()
+    
     // return json with all questions 
     res.json(questions)
 })
@@ -36,10 +37,12 @@ app.get('/questions', async (req, res) => {
 * == post new question == */ 
 app.post('/question/new', (req, res) => {
     const question = new QA({
-        text: req.body.text
-    })
+        question: req.body.question, 
+        answer: req.body.answer
 
+    })
     question.save()
+    
     // returns new question
     res.json(question)
 })
@@ -48,25 +51,31 @@ app.post('/question/new', (req, res) => {
 /* DELETE /question/delete/:id
  * == delete question by id == */ 
 app.delete('/question/delete/:id', async (req, res) => {
-    const result = await QA.findByIdAndDelete(req.params.id)
+    const id = req.params.id
+    const result = await QA.findByIdAndDelete(id)
+
     // returns deleted item
     res.json(result)
 })
 
 
-/* PUT /question/complete/:id
- * == change state of question with :id to other binary state (complete/not)== */ 
-app.get('/question/edit/:id', async (req, res) => {
-    const question = await QA.findById(req.params.id)
-    question.complete = !todo.complete
-    question.save()
-    /* return our changed question */ 
-    res.json(question)
-})
+
+
+
+
 
 
 /* PORT declared globally */ 
 app.listen(PORT, 
     () => console.log(`QA server started on port: ${PORT}`))
+
+
+
+
+
+
+
+
+
 
 
